@@ -14,10 +14,25 @@ $(function() {
         }
     });
 
+    
     // List of comments for an entry.
     var CommentList = Backbone.Collection.extend({
         model: Comment
     });  
-
     var Comments = new CommentList;
+
+    
+    // Views
+    var AppView = Backbone.View.extend({
+        el: $("#application"),
+
+        events: {
+            "click #button": "buttonClicked"
+        },
+
+        buttonClicked: function(e) {
+            alert('Clicked')
+        }
+    });
+    var App = new AppView
 });
