@@ -9,6 +9,7 @@
 
     <div id="application">
         <button id="button">Click me</button>
+        <div id="templatePanel"/>
     </div>
 
     <!-- Dependencies and actual application. -->
@@ -16,5 +17,10 @@
     <script src="js/underscore.js" ></script>
     <script src="js/backbone.js" ></script>
     <script src="js/application.js" ></script>
+
+    <!-- Panels. -->
+    <script type="text/template" id="template">
+        <span><%= date %></span>
+  </script>
 </body>
 </html>
