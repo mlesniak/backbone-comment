@@ -6,10 +6,12 @@
 </head>
 
 <body>
+    <div id="commandPanel">
+        <input type="text" id="command" placeholder="Command" autofocus/>
+        <button id="button">Execute</button>
+    </div>
 
-    <div id="application">
-        <button id="button">Click me</button>
-        <div id="templatePanel"/>
+    <div id="resultPanel">
     </div>
 
     <!-- Dependencies and actual application. -->
@@ -21,6 +23,6 @@
     <!-- Panels. -->
     <script type="text/template" id="template">
         <span><%= date %></span>
-  </script>
+    </script>
 </body>
 </html>

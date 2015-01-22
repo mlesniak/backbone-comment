@@ -1,27 +1,51 @@
 // Application.js
 
 $(function() {
+    var CommandModel = Backbone.Model.extend({
+        defaults: function() {
+            return {
+                text: "",
+                date: new Date()
+            }
+        }
+    });
+    command = new CommandModel
+
+
     // Views.
+    // We can attach all kinds of events to models (and collections, views, ...).
     var AppView = Backbone.View.extend({
-        el: $("#application"),
-        dateTemplate: _.template($("#template").html()),
+        el: $("#commandPanel"),        
+        command: $("#command"),
 
         // Rendering.
         render: function() {
-            $("#templatePanel").html(this.dateTemplate({
-                date: new Date()
-            }));
+            // Render a panel inside this view.
             return this;
         },
 
         // Event handling.
         events: {
-            "click #button": "buttonClicked"
+            "click #button": "executeCommand",
+            "keypress #command": "executeCommandOnEnter"
+
         },
 
-        buttonClicked: function(e) {
+        executeCommand: function(e) {
+            console.log("Command on Button:", this.command.val())
+            this.command.val('')
+            this.render()
+        },
+
+        executeCommandOnEnter: function(e) {
+            if (e.keyCode != 13) {
+                return;
+            }
+            console.log("Command on Enter:", this.command.val())
+            this.command.val('')
             this.render()
         }
+
     });
     var App = new AppView
 });
